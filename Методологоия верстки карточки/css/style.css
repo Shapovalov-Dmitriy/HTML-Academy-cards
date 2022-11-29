@@ -1,0 +1,127 @@
+/* Перепечатывал стили с сайта */
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #797980;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* ============================================ */
+
+.card-container {
+  box-sizing: border-box;
+  width: 1366px;
+  margin: 3em auto 0 auto;
+  padding: 98px;
+}
+.card {
+  display: flex;
+}
+.card__img-container {
+  flex-basis: calc((100% - 15px) / 2);
+  margin-right: 15px;
+}
+.card .active {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+.img-carousel {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.img-carousel__item {
+  position: relative;
+  cursor: pointer;
+}
+.img-carousel__item:not(:last-child) {
+  margin-right: 30px;
+}
+.img-carousel__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.2s ease-in-out 0s;
+}
+.img-carousel__item:hover::before {
+  background-color: transparent;
+  transform: background-color 0.2s ease-in-out 0s;
+}
+.img-carousel__item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.card__info-container {
+  flex-basis: calc((100% - 15px) / 2);
+  margin-left: 15px;
+}
+/* Дальше не верстал из-за проблемы с расположением изображений */
+.card-info {
+}
+.card-info__title {
+}
+.card-info__rate {
+}
+.card-info__stars {
+}
+.star-rate {
+}
+.card-info__link-to-reviev {
+}
+.link {
+}
+.card-info__text {
+}
+.card-info__color-block {
+}
+.card-info__subtitle {
+}
+.color-chooser {
+}
+.color-chooser__item {
+}
+.card-info__size-blok {
+}
+.size-chooser {
+}
+.size-chooser__item {
+}
+.size-chooser_label {
+}
+.card-info__data-list {
+}
+.data-list {
+}
+.card-info__button-block {
+}
+.card-info__price {
+}
+.card-info__button {
+}
+.button {
+}

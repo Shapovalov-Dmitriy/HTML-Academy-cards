@@ -1,0 +1,379 @@
+/* Скопировал стили с сайта HTML-academy */
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #797980;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* утилитные классы */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* компоненты */
+/* компонент — контейнер для карточки */
+.card-container {
+  box-sizing: border-box;
+  width: 1366px;
+  margin-top: 3em;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 98px;
+}
+
+/* компонент — одна карточка товара */
+.card {
+  display: flex;
+}
+
+.card__img-container {
+  flex-basis: calc((100% - 15px) / 2);
+  margin-right: 15px;
+}
+
+.card .active {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.card__info-container {
+  flex-basis: calc((100% - 15px) / 2);
+  margin-left: 15px;
+}
+.img-carousel {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.img-carousel__item {
+  position: relative;
+  cursor: pointer;
+}
+
+.img-carousel__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+/* Показывает мутное состояние */
+.img-carousel__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.2s ease-in-out 0s;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Наведение. Анимация наведения должна работать в обе стороны, так что свойство transition использовано в обоих случаях */
+.img-carousel__item:hover::before {
+  transition: background-color 0.2s ease-in-out 0s;
+  background-color: transparent;
+}
+
+.img-carousel__item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.card-info {
+  display: grid;
+  grid-template-rows:
+    repeat(2, auto)
+    1fr
+    repeat(4, auto);
+  /* Это означает, что заголовок и блок рейтинга будут auto, текст займёт место, которое останется после распределения, и ещё 4 блока займут минимальное для себя пространство, это блоки выбора цвета и размера, блок характеристик и блок заказа с ценой и кнопкой */
+}
+
+.card-info__title {
+  margin-bottom: 0.6em;
+  color: #16161a;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.card-info__subtitle {
+  margin-bottom: 1.15em;
+  color: #16161a;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.card-info__rate {
+  display: flex;
+  /* это блок рейтинга, он содержит и галерею со звёздочками, и ссылку на отзывы */
+}
+
+.card-info__stars {
+  margin-right: 1.1em;
+}
+
+.card-info__stars.star-rate img:not(:last-child) {
+  margin-right: 7px;
+}
+
+.card-info__link-to-reviews {
+  color: #797980;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.card-info__text {
+  align-self: center;
+  margin: 0;
+  color: #797980;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.card-info__color-block {
+  box-sizing: border-box;
+  margin-bottom: 1.6em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid rgba(22, 22, 26, 0.1);
+}
+
+.card-info__size-block {
+  box-sizing: border-box;
+  margin-bottom: 1.6em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid rgba(22, 22, 26, 0.1);
+}
+
+.card-info__data-list {
+  margin-bottom: 3.5em;
+}
+
+.card-info__button-block {
+  display: flex;
+  align-items: center; /* относится к потомкам */
+  align-self: end; /* относится к элементу */
+}
+
+.card-info__price {
+  flex-basis: 200px; /* используем то свойство, которое явно принадлежит флексбоксу */
+  max-width: 200px;
+  margin: 0;
+  color: #16161a;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+/* компонент — рейтинг с помощью звёздочек */
+.star-rate {
+  display: flex;
+}
+
+.star-rate img {
+  display: block;
+}
+
+.star-rate img:not(:last-child) {
+  margin-right: 5px;
+}
+/* компонент — выбор цвета */
+.color-chooser {
+  display: flex;
+}
+
+.color-chooser__item {
+  position: relative;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  background-color: #000000;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: initial;
+  cursor: pointer;
+}
+
+.color-chooser__item::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  box-sizing: border-box;
+  width: calc(30px + 5px * 2); /* вычисляем: размер элемента и два раза по отступу 5 пикселей */
+  height: calc(30px + 5px * 2);
+  background-color: inherit; /* унаследовать фон у элемента */
+}
+
+/* Эти свойства должны загораживать фон неактивного элемента  */
+.color-chooser__item::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  box-sizing: border-box;
+  width: calc(30px + 5px * 2);
+  height: calc(30px + 5px * 2);
+  border: 5px solid #ffffff;
+}
+
+.color-chooser__item:checked::after {
+  top: -4px;
+  left: -4px;
+  width: calc(30px + 4px * 2); /* вычисление: на 1 пиксель меньше, чтобы осталась рамка */
+  height: calc(30px + 4px * 2);
+  border: 4px solid #ffffff;
+}
+
+.color-chooser__item:not(:last-child) {
+  margin-right: 18px;
+}
+
+/* компонент — выбор размера */
+.size-chooser {
+  display: flex;
+}
+
+.size-chooser__label {
+  box-sizing: border-box;
+  width: 35px;
+  height: 31px;
+  transition: border-color 0.2s ease-in-out 0s;
+  border: 1px solid rgba(22, 22, 26, 0.1);
+  color: #16161a;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 14px;
+  line-height: 31px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.size-chooser__label:not(:last-child) {
+  margin-right: 10px;
+}
+
+.size-chooser__label:hover {
+  transition: border-color 0.2s ease-in-out 0s;
+  border-color: #16161a;
+}
+
+.size-chooser__item {
+  display: none;
+  /* сами радиокнопки не должно быть видно */
+}
+
+.size-chooser__item:checked + .size-chooser__label {
+  border-color: #16161a;
+  /* касается лейбла, только если прямо перед ним стоит выбранная радиокнопка */
+}
+/* компонент — список характеристик */
+.data-list {
+  margin: 0; /* сброс отступа сверху по умолчанию */
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.data-list__row {
+  display: flex;
+}
+
+.data-list__row:not(:last-child) {
+  margin-bottom: 1.1em;
+}
+
+.data-list dt {
+  flex-basis: 200px;
+  margin: 0; /* сброс отступов по умолчанию */
+  color: #16161a;
+}
+
+.data-list dd {
+  margin: 0; /* сброс отступов по умолчанию */
+  color: #797980;
+}
+/* компонент — ссылка */
+.link {
+  transition: color, text-decoration-color 0.2s ease-in-out 0s;
+}
+
+.link:visited {
+  color: #1ea5fc; /* Пока что ссылки нет, так что свойство не работает */
+}
+
+.link:hover {
+  transition: color 0.2s ease-in-out 0s;
+  color: #16161a;
+}
+
+.link:focus {
+  transition: text-decoration-color 0.2s ease-in-out 0s;
+  text-decoration-color: #1ea5fc;
+}
+
+.link:active {
+  transition: text-decoration-color 0.2s ease-in-out 0s;
+  text-decoration-color: #1ea5fc;
+}
+
+/* компонент - кнопка */
+/* предположим, что на сайте могут быть другие кнопки, вероятно, не такие большие  */
+.card-info__button {
+  width: 370px;
+  height: 52px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.button {
+  box-sizing: border-box;
+  padding: 0;
+  border: 2px solid #16161a;
+  background-color: #16161a;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:enabled:hover,
+.button:enabled:focus,
+.button:enabled:active {
+  transition: background-color, color, border 0.2s ease-in-out 0s;
+}
+
+.button:enabled:hover {
+  background-color: #ffffff;
+  color: #16161a;
+}
+
+.button:enabled:focus,
+.button:enabled:active {
+  border: 2px solid #16161a;
+  outline: 2px solid #1ea5fc;
+  background-color: #16161a;
+  color: #ffffff;
+}
+
+.button:disabled {
+  border-color: #e1e1e6;
+  background-color: #e1e1e6;
+  color: #afafb3;
+}
